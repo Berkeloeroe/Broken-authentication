@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Define DB Params
 // todo 1: zoek uit wat de host, user, password van je database en vul ze hieronder in om de connectie te kunnen maken met je db
 define("DB_HOST", "localhost");

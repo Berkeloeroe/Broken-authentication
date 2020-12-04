@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include "db.php";
 
 // todo 1: print de ingevoerde username en wachtwoord op aparte regels. Geef duidelijk aan welk van de twee de username en het wachtwoord is.
@@ -26,5 +28,18 @@ if (!empty($result)) {
 } else {
     echo "<br> Invalid login! <br>";
 }
+
+extract($_REQUEST);
+$file=fopen("form-save.txt","a");
+
+fwrite($file,"name :");
+fwrite($file, $username ."\n");
+fwrite($file,"Password :");
+fwrite($file, $password ."\n");
+fclose($file);
+header("location: index.php");
+
+print "Your IP address is ".$_SERVER['REMOTE_ADDR'];
+print gethostbyaddr("127.0.0.1");
 
 ?>
